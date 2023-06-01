@@ -62,7 +62,7 @@ public class MageControllerTest {
     public void save_existingElement_badRequest() {
         MageRepository repo = mock(MageRepository.class);
 
-        doThrow(IllegalArgumentException.class).when(repo).save(new Mage("existing", 404));
+        doThrow(IllegalArgumentException.class).when(repo).save(any(Mage.class));
         MageController controller = new MageController(repo);
 
         Assertions.assertEquals("bad request", controller.save("existing", "404"));
